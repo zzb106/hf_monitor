@@ -7,7 +7,7 @@ mkdir -p $TARGET
 
 download () { 
 	find $TARGET/.cache/ -name "*.incomplete" -type f -delete;
-	huggingface-cli download --repo-type model $REPO --local-dir $TARGET  --cache-dir $TARGET/.cache/ --local-dir-use-symlinks False --max-workers $MAX_WORKERS; }
+	hf download --repo-type model $REPO --local-dir $TARGET  --cache-dir $TARGET/.cache/ --max-workers $MAX_WORKERS; }
 
 
 #huggingface-cli download --repo-type $REPO --local-dir $TARGET  --cache-dir $TARGET/.cache/ --local-dir-use-symlinks False
