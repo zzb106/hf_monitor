@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Change directory to where the script is located
+cd "$(dirname "$0")"
+
 REPO=$1
 TARGET="/raid/datasets/${REPO##*/}"
 LOCKDIR="$TARGET/.download.lock"
