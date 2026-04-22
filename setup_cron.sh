@@ -2,7 +2,7 @@
 
 # Get the absolute path of the current directory
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-SCRIPT_PATH="$SCRIPT_DIR/update_and_download.sh"
+SCRIPT_PATH="cd $SCRIPT_DIR && ./update_and_download.sh"
 
 # Cron schedule: Every hour (at minute 7 to avoid top-of-the-hour spikes)
 CRON_SCHEDULE="7 * * * *"
