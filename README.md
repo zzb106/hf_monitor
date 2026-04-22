@@ -19,6 +19,16 @@ chmod +x *.sh
 ./update_and_download.sh
 ```
 
+## Automation
+
+To automate this process every hour using cron:
+
+```bash
+chmod +x setup_cron.sh
+./setup_cron.sh
+```
+This will install a cron job that executes `update_and_download.sh` at minute 7 of every hour and logs output to `cron_log.log`.
+
 ## Tracking
 
 The system uses local tracking files (`.downloaded_models` and `.downloaded_datasets`) to ensure that repositories are not redownloaded once successfully acquired. These tracking files are not committed to the repository.
