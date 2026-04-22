@@ -4,9 +4,14 @@
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 SCRIPT_PATH="cd $SCRIPT_DIR && ./update_and_download.sh"
 
+# Get the path to the hf binary
+HF_PATH="$(which hf)"
+HF_BIN_DIR="$(dirname "$HF_PATH")"
+
 # Cron schedule: Every hour (at minute 7 to avoid top-of-the-hour spikes)
 CRON_SCHEDULE="7 * * * *"
-CRON_JOB="$CRON_SCHEDULE $SCRIPT_PATH >> $SCRIPT_DIR/cron_log.log 2>&1"
+# Add the HF binary directory to the PATH for the cron environment
+CRON_JOB="$CRON_SCHEDULE PATH=\"$PATH:$HF_BIN_DIR\" $SCRIPT_PATH >> $SCRIPT_DIR/cron_log.log 2>&1"
 
 # Check if the job already exists in crontab
 (crontab -l 2>/dev/null | grep -F "$SCRIPT_PATH")
