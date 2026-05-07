@@ -1,0 +1,9 @@
+#!/bin/bash
+echo "Mock HF download called with: $*"
+# Simulate failure on first call, success on second
+if [ ! -f "$HOME/.hf_fail_once" ]; then
+    touch "$HOME/.hf_fail_once"
+    exit 1
+fi
+rm "$HOME/.hf_fail_once"
+exit 0

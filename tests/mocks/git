@@ -1,0 +1,3 @@
+#!/bin/bash
+echo "Mock git called with: $*"
+exit 0
